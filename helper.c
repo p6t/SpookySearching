@@ -25,17 +25,12 @@ int* listGen(int n){
 		}
 	}
 	
-	// Print list post scramble
-	i = 0;
-	for (i; i < n; i++){
-		printf("%d\n", list[i]);
-	}
-
 	return list;
 }
 
-int findVal(int* list, int n, int val){
+int _search(int* list, int n, int val){
 
+	printf("Original findVal function called\n");
 	int i = 0;
 	for (i; i < n; i++){
 		if (list[i] == val){
@@ -51,17 +46,11 @@ void modifyList(int* list, int n, int index){
 
 	int randNum, element, val;
 	randNum = rand() % n;
-	printf("Random number is index %d\n\n", randNum);
 	element = list[randNum];
 	val = list[index];
 	
 	list[randNum] = val;
 	list[index] = element;
-	
-	int i = 0;
-	for (i; i < n; i++){
-		printf("%d\n", list[i]);
-	}
 }
 
 
