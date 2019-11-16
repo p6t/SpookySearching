@@ -5,7 +5,7 @@
 
 int* listGen(int n);
 
-int _search(int* list, int n, int val);
+int _search(int* list, int list_size, int parallels, int target);
 
 void modifyList(int* list, int n, int index);
 
