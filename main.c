@@ -7,6 +7,7 @@
 
 
 int main(int argc, char **argv) {
+	int i;
 
 	/* These are just some preset values for running a simple test case. */
 	int n = 10;
@@ -14,6 +15,14 @@ int main(int argc, char **argv) {
 
 	/* Print list of scrambled numbers, search for value, and then swap this value with a randomly chosen index. */
 	int* list = listGen(n);
+
+	printf("List: [");
+	for(i=0; i<n; ++i) {
+		printf("%d ", list[i]);
+	}
+	printf("]\n");
+	printf("Value: %d\n", value);
+
 	int indexOfValue = _search(list, n, 1, value);
 	printf("The value was found at index %d\n", indexOfValue);
 
