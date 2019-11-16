@@ -5,6 +5,6 @@
 
 //#define _search(list, n, value) search((list), (n), (value))
 
-int search(int* list, int n, int val);
+int search(int* list, int n, int procs, int val);
 
 #endif
