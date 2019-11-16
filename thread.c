@@ -92,7 +92,7 @@ int return: the index of the target in list, or -1 if not found.
 int linear_search(int* list, int list_size, int target) {
         int i;
         for(i=0; i<list_size; ++i) {
-                if(list[i] == val) {
+                if(list[i] == target) {
                         return(i);
                 }
         }
