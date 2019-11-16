@@ -72,7 +72,7 @@ int split_list(int list_size, int* start_i, int n_parallels) {
 	if(n_parallels == 1) {
 		return(0);
 	}
-	if(n_parellels == 2) {
+	if(n_parallels == 2) {
 		start_i[1] += list_size/2;
 		return(0);
 	}
@@ -81,8 +81,8 @@ int split_list(int list_size, int* start_i, int n_parallels) {
 	for(i=n_parallels/2; i<n_parallels; ++i) {
 		start_i[i] += list_size/2;
 	}
-	err1 = split_list(list_size/2, start_i, n_parallels/2));
-	err2 = split_list(list_size - list_size/2, &(start_i[n_parallels/2], n_parallels - n_parallels/2);
+	err1 = split_list(list_size/2, start_i, n_parallels/2);
+	err2 = split_list(list_size - list_size/2, &(start_i[n_parallels/2]), n_parallels - n_parallels/2);
 	if(err1 || err2) {
 		return(-1);
 	}
