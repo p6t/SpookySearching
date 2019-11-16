@@ -1,8 +1,10 @@
 #include "thread.h"
 
+// Made this comment to create a new branch on github.
+
 /* Creation of child threads will be called inside search function. */
 int search(int* list, int n, int val){
-
+	
 	printf("Thread search called\n");
 	
 	// This block of code is what would be called by the child thread.	
