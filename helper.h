@@ -9,4 +9,6 @@ int _search(int* list, int n, int val);
 
 void modifyList(int* list, int n, int index);
 
+int split_list(int list_size, int* start_i, int n_parallels);
+
 #endif
