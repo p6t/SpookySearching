@@ -10,7 +10,7 @@ int target: the number to find in the list.
 --
 int return: the index of the target in list, or -1 if not found.
 */
-int thread_search(int* list, int list_size, int n_threads, int target){
+int search(int* list, int list_size, int n_threads, int target){
 	int i;
 	int err;
 	int* start_i;
@@ -24,6 +24,14 @@ int thread_search(int* list, int list_size, int n_threads, int target){
 		start_i[i] = 0;
 	}
 	split_list(list_size, start_i, n_threads);
+	
+	if(THREAD_DEBUG) {
+		printf("thread_search(): Start indicies: [ ");
+		for(i=0; i<n_threads; ++i) {
+			printf("%d ", start_i[i]);
+		}
+		printf("]\n");
+	}
 
 	// Creating attribute structs for each thread.
 	for(i=0; i<n_threads; ++i) {
@@ -51,8 +59,17 @@ int thread_search(int* list, int list_size, int n_threads, int target){
 	// Joining the threads back together.
 	for(i=0; i<n_threads; ++i) {
 		pthread_join(thread[i], NULL);
-		thread_returns[i] = atts[i]->result;
+		thread_returns[i] = start_i[i]+atts[i]->result;
 	}
+
+	if(THREAD_DEBUG) {
+                printf("thread_search(): thread returns: [ ");
+                for(i=0; i<n_threads; ++i) {
+                        printf("%d ", atts[i]->result);
+                }
+                printf("]\n");
+        }
+
 
 	// Freeing allocated memory.
 	free(start_i);
@@ -62,7 +79,7 @@ int thread_search(int* list, int list_size, int n_threads, int target){
 	
 	// Inspecting the return values of each thread for a success.
 	for(i=0; i<n_threads; ++i) {
-		if(thread_returns[i] != -1) {
+		if(thread_returns[i] >= start_i[i]) {
 			return(thread_returns[i]);
 		}
 	}
@@ -77,6 +94,8 @@ void* my_thread(void* arg) {
 	int target = tdata->target;
 
 	int result = linear_search(list, list_size, target);
+	tdata->result = result;
+	printf("my_thread(): linear search on list of size %d, found at %d\n", list_size, result);
 	pthread_exit(NULL);
 }
 
