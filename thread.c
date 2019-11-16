@@ -40,7 +40,7 @@ int thread_search(int* list, int list_size, int n_threads, int target){
 
 	// Creating a number of threads running linear_search() on parts of the list.
 	for(i=0; i<n_threads; ++i) {
-		err = pthread_create(&thread[i], NULL, my_thread, (void*) atts[i])
+		err = pthread_create(&thread[i], NULL, my_thread, (void*) atts[i]);
 		
 		// If thread creation failed.
 		if(err) {

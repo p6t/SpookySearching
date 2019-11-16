@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-//#define _search(list, size, parallels, target) thread_search((list), (size), (parallels), (target))
+#define _search(list, size, parallels, target) thread_search((list), (size), (parallels), (target))
 
 typedef struct _thread_atts {
 	int* list;
