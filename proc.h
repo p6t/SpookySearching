@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "helper.h"
 
-#define _search(list, n, value) search((list), (n), (value))
+//#define _search(list, n, value) search((list), (n), (value))
 
 int search(int* list, int n, int val);
 
