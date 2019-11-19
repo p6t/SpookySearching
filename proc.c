@@ -79,11 +79,11 @@ void create_procs(int n_procs, int* list, int* sublist_indices, int list_size, i
 			// replace list and list_size below with new values.
 			for (j; j < sublist_size; j++){ 
 				if (sub[j] == target){
-					printf("Child %d found target at index %d in sublist\n", i, j);
+					printf("Child %d found target at index %d of sublist\n", i, j);
 					exit(j);
 				}
 			}
-			printf("Child %d did not find target in sublist\n", i);
+			printf("Child %d did not find target of sublist\n", i);
 			exit(-1);
 		}
 		else if (childPid < 1){
