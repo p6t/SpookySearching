@@ -15,7 +15,8 @@ int search(int* list, int list_size, int n_procs, int target){
 
 	// create children processes and write to child_responses array
 	create_procs(n_procs, list, sublist_indices, list_size, target, children);
-	
+
+	// Look through children processes and find child who found target
 	int childResult = -1;
 	int output = -1;
 	for (i=0; i < n_procs; i++){
@@ -78,12 +79,11 @@ void create_procs(int n_procs, int* list, int* sublist_indices, int list_size, i
 			// replace list and list_size below with new values.
 			for (j; j < sublist_size; j++){ 
 				if (sub[j] == target){
-					printf("Child %d found target at index %d in sublist\n", i, j); int z; for (z=0;z<sublist_size;z++){printf("[%d]\n", sub[z]);}
-					printf("Also known as index %d in original list\n", j + (first_index));
+					printf("Child %d found target at index %d in sublist\n", i, j);
 					exit(j);
 				}
 			}
-			printf("Child %d did not find target in sublist\n", i);int z; for (z=0;z<sublist_size;z++){printf("[%d]\n", sub[z]);} 
+			printf("Child %d did not find target in sublist\n", i);
 			exit(-1);
 		}
 		else if (childPid < 1){
@@ -102,13 +102,12 @@ Sublist gen_sublist(int* list, int list_size, int* sublist_indices, int n_procs,
 	int first_index, last_index, sublist_size;
 		
 	first_index = sublist_indices[proc_id];
-	if (proc_id == n_procs - 1){  // if this is the last proc
+	if (proc_id == n_procs - 1){  // if this is the last process
 			last_index = list_size - 1;
 	} else {
-			last_index = sublist_indices[proc_id+1] - first_index;
+			last_index = sublist_indices[proc_id+1] - first_index + offset - 1;
 	}
-	sublist_size = last_index - first_index;
-
+	sublist_size = last_index - first_index + 1;
 	int* sub = malloc(sizeof(int) * sublist_size);
 	
 	int i;
