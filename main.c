@@ -17,11 +17,9 @@ int main(int argc, char **argv) {
 	int* list = listGen(n);
 
 	for(i=1; i<=4; ++i) {
-<<<<<<< HEAD
  		printf("\nList: [");
-=======
- 		printf("List: [");
->>>>>>> a68be83ae1d1b23e9c7942323dc0096456233bbe
+
+
         	for(j=0; j<n; ++j) {
                 	printf("%d ", list[j]);
         	}
@@ -30,12 +28,7 @@ int main(int argc, char **argv) {
 
 		printf("Search with %d parallels:\n", i);
 		int indexOfValue = _search(list, n, i, value);
-<<<<<<< HEAD
 		printf("The value was found at index %d\n\n", indexOfValue);
-=======
-		printf("The value was found at index %d\n", indexOfValue);
-
->>>>>>> a68be83ae1d1b23e9c7942323dc0096456233bbe
 	}
 }
 
