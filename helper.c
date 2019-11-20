@@ -65,27 +65,16 @@ for example, calling split_list(8, [0,0], 2) will change [0,0] into [0,4].
 int return: 0 if success, -1 if error.
 */
 int split_list(int list_size, int* start_i, int n_parallels) {
-	int i, err1, err2;
-	if(n_parallels == 0) {
+	int i;
+	
+	if(list_size < n_parallels) {
 		return(-1);
-	}
-	if(n_parallels == 1) {
-		return(0);
-	}
-	if(n_parallels == 2) {
-		start_i[1] += list_size/2;
-		return(0);
 	}
 
-	// Recursively adding to the start indicies.
-	for(i=n_parallels/2; i<n_parallels; ++i) {
-		start_i[i] += list_size/2;
-	}
-	err1 = split_list(list_size/2, start_i, n_parallels/2);
-	err2 = split_list(list_size - list_size/2, &(start_i[n_parallels/2]), n_parallels - n_parallels/2);
-	if(err1 || err2) {
-		return(-1);
-	}
+	for(i=0; i<n_parallels; ++i) {
+		start_i[i] = i*list_size/n_parallels;
+	}	
+
 	return(0);
 }
 
