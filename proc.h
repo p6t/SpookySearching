@@ -5,7 +5,6 @@
 
 #define _search(list, size, parallels, target) search((list), (size), (parallels), (target))
 
-
 // Structs
 typedef struct _Sublist {
 	int* list;
@@ -19,9 +18,6 @@ int* generate_sublist_indices(int list_size, int n_procs);
 void show_indices(int* sublist_indices, int n_procs);
 void create_procs(int n_procs, int* list, int* sublist_indices, int list_size, int target, pid_t* children);
 Sublist gen_sublist(int* list, int list_size, int* sublist_indices, int n_procs, int proc_id,  int offset);
-//#define _search(list, n, value) search((list), (n), (value))
-
-int search(int* list, int n, int procs, int val);
 
 #define _search(list, size, parallels, target) search((list), (size), (parallels), (target))
 

@@ -95,7 +95,7 @@ void* my_thread(void* arg) {
 
 	int result = linear_search(list, list_size, target);
 	tdata->result = result;
-	printf("my_thread(): linear search on list of size %d, found at %d\n", list_size, result);
+//	printf("my_thread(): linear search on list of size %d, found at %d\n", list_size, result);
 	pthread_exit(NULL);
 }
 
