@@ -18,6 +18,8 @@ int main(int argc, char **argv) {
 
 	for(i=1; i<=4; ++i) {
  		printf("\nList: [");
+
+
         	for(j=0; j<n; ++j) {
                 	printf("%d ", list[j]);
         	}
