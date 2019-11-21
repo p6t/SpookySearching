@@ -16,7 +16,6 @@ int search(int* list, int list_size, int n_procs, int target){
 	// create children processes and write to child_responses array
 	create_procs(n_procs, list, sublist_indices, list_size, target, children);
 
-
 	// Look through children processes and find child who found target
 	int childResult = -1;
 	int output = -1;
@@ -28,8 +27,10 @@ int search(int* list, int list_size, int n_procs, int target){
 			output =  return_val + sublist_indices[i];
 		}
 	}
+
 	free(sublist_indices);
 	free(children);
+
 	return output;
 }
 
@@ -43,6 +44,16 @@ int* generate_sublist_indices(int list_size, int n_procs){
 	for (i=0; i<n_procs; i++){
 		sublist_indices[i] = 0;
 	}
+	printf("]\n");
+}
+
+void create_procs(int n_procs, int* list, int* sublist_indices, int list_size, int target, pid_t* children){
+
+	int offset = 0;
+	int i;
+	for (i=0; i < n_procs; i++){
+	
+		int first_index, last_index, sublist_size;
 
 	// Use split_list function to generate list of starting
 	// indices for each sublist.

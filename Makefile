@@ -1,5 +1,5 @@
-all: main.c helper.o
-	gcc -o test main.c helper.o
+all: 
+	ERROR: try 'make proc' or 'make thread'
 helper.o: helper.c
 	gcc -c helper.c
 proc: main.c proc.o helper.o
