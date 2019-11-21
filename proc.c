@@ -8,13 +8,14 @@ int search(int* list, int list_size, int n_procs, int target){
 	// Getting first index of each sublist,
 	// where each process will search through each sublist.
 	int* sublist_indices = generate_sublist_indices(list_size, n_procs);
-	show_indices(sublist_indices, n_procs);
+	//show_indices(sublist_indices, n_procs);
 
 	// Preallocate space for each child's pid 
 	pid_t* children = malloc(sizeof(pid_t)*n_procs);
 
 	// create children processes and write to child_responses array
 	create_procs(n_procs, list, sublist_indices, list_size, target, children);
+
 
 	// Look through children processes and find child who found target
 	int childResult = -1;
@@ -27,6 +28,8 @@ int search(int* list, int list_size, int n_procs, int target){
 			output =  return_val + sublist_indices[i];
 		}
 	}
+	free(sublist_indices);
+	free(children);
 	return output;
 }
 
@@ -79,11 +82,11 @@ void create_procs(int n_procs, int* list, int* sublist_indices, int list_size, i
 			// replace list and list_size below with new values.
 			for (j; j < sublist_size; j++){ 
 				if (sub[j] == target){
-					printf("Child %d found target at index %d of sublist\n", i, j);
+	//				printf("Child %d found target at index %d of sublist\n", i, j);
 					exit(j);
 				}
 			}
-			printf("Child %d did not find target of sublist\n", i);
+	//		printf("Child %d did not find target of sublist\n", i);
 			exit(-1);
 		}
 		else if (childPid < 1){

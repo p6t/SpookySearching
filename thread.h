@@ -6,7 +6,7 @@
 #include <pthread.h>
 
 #define _search(list, size, parallels, target) search((list), (size), (parallels), (target))
-#define THREAD_DEBUG 1
+#define THREAD_DEBUG 0
 
 typedef struct _thread_atts {
 	int* list;

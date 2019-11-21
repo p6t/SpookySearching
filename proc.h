@@ -5,7 +5,6 @@
 
 #define _search(list, size, parallels, target) search((list), (size), (parallels), (target))
 
-
 // Structs
 typedef struct _Sublist {
 	int* list;
